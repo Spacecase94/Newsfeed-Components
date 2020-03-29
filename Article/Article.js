@@ -112,3 +112,21 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function article() {
+ let container = document.querySelector('.articles');
+  let div = document.createElement('div');
+  let h2 = document.createElement('h2');
+  let p = document.createElement('p');
+  let span = document.createElement('span');
+
+
+  let divContainer = container.appendChild(div);
+  let h2Element = divContainer.appendChild(h2)
+  let pElement = divContainer.appendChild(p);
+  let spanElement = divContainer.appendChild(span);
+
+  divContainer.classList = 'article';
+};
+
+article();
