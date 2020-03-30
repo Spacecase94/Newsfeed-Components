@@ -107,26 +107,41 @@ const data = [
 
   Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  Step 4: Map over the data, creating a component for each object and add each component to the DOM as children of the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
 
 function article() {
- let container = document.querySelector('.articles');
-  let div = document.createElement('div');
-  let h2 = document.createElement('h2');
-  let p = document.createElement('p');
-  let span = document.createElement('span');
+    let container = document.querySelector('.articles');
+    let div = document.createElement('div');
+    let h2 = document.createElement('h2');
+    let p = document.createElement('p');
+    let span = document.createElement('span');
+
+    let divContainer = container.appendChild(div);
+    let h2Element = divContainer.appendChild(h2);
+    let pElement = divContainer.appendChild(p);
+    let spanElement = divContainer.appendChild(span);
 
 
-  let divContainer = container.appendChild(div);
-  let h2Element = divContainer.appendChild(h2)
-  let pElement = divContainer.appendChild(p);
-  let spanElement = divContainer.appendChild(span);
+    let article = divContainer.classList = 'article';
+    let date = pElement.classList = 'date';
+    let expandButton = spanElement.classList = 'expandButton';
 
-  divContainer.classList = 'article';
+    data.map((item, index) =>{
+        h2Element.textContent =  `${item.title}`;
+        pElement.textContent = `${item.date}`;
+        return console.log(item.date);
+    });
+
+
+
+
+    span.addEventListener('click', (event) => {
+        event.target.classList.toggle('.article-open');
+    });
 };
 
 article();
