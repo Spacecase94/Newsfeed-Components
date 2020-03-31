@@ -113,7 +113,7 @@ const data = [
 
 */
 
-function article() {
+const  createArticleComponent = (title, date, content) => {
     let container = document.querySelector('.articles');
     let div = document.createElement('div');
     let h2 = document.createElement('h2');
@@ -125,23 +125,12 @@ function article() {
     let pElement = divContainer.appendChild(p);
     let spanElement = divContainer.appendChild(span);
 
+    divContainer.classList.add('article');
+    pElement.classList.add('date');
+    spanElement.classList.add('expandButton');
 
-    let article = divContainer.classList = 'article';
-    let date = pElement.classList = 'date';
-    let expandButton = spanElement.classList = 'expandButton';
-
-    data.map((item, index) =>{
-        h2Element.textContent =  `${item.title}`;
-        pElement.textContent = `${item.date}`;
-        return console.log(item.date);
-    });
-
-
-
-
-    span.addEventListener('click', (event) => {
-        event.target.classList.toggle('.article-open');
-    });
+    // p.textContent = `Title: ${title} \n Date: ${date} \n Content: ${content}`;
+    return p;
 };
 
-article();
+const article = createArticleComponent('test title', 'test date', 'test content');
