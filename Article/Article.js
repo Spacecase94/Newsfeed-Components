@@ -113,24 +113,50 @@ const data = [
 
 */
 
-const  createArticleComponent = (title, date, content) => {
-    let container = document.querySelector('.articles');
-    let div = document.createElement('div');
-    let h2 = document.createElement('h2');
-    let p = document.createElement('p');
-    let span = document.createElement('span');
+// const createParagraphs = (p) => {
+//   p.forEach(paragraph => {
+//       document.createElement('p');
+//   });
+// };
 
-    let divContainer = container.appendChild(div);
-    let h2Element = divContainer.appendChild(h2);
-    let pElement = divContainer.appendChild(p);
-    let spanElement = divContainer.appendChild(span);
+const  createArticleComponent = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+    let articleContainer = document.querySelector('.articles');
+    let article = document.createElement('div');
+    let articleTitle = document.createElement('h2');
+    let articleDate = document.createElement('p');
+    let articleParagraph0 = document.createElement('p');
+    let articleParagraph1 = document.createElement('p');
+    let articleParagraph2 = document.createElement('p');
+    let articleButton = document.createElement('span');
+
+    // let articleParagraph = numOfParagraphs.forEach(paragraph => {
+//     document.createElement('p');
+//
+// });
+    let divContainer = articleContainer.appendChild(article);
+    let h2Element = divContainer.appendChild(articleTitle);
+    let pElement0 = divContainer.appendChild(articleDate);
+    let pElement1 = divContainer.appendChild(articleParagraph0);
+    let pElement2 = divContainer.appendChild(articleParagraph1);
+    let pElement3 = divContainer.appendChild(articleParagraph2);
+    let spanElement = divContainer.appendChild(articleButton);
 
     divContainer.classList.add('article');
-    pElement.classList.add('date');
+    pElement0.classList.add('date');
     spanElement.classList.add('expandButton');
 
-    // p.textContent = `Title: ${title} \n Date: ${date} \n Content: ${content}`;
-    return p;
+    // spanElement.style.border = '1px solid black';
+    //
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    articleParagraph0.textContent = firstParagraph;
+    articleParagraph1.textContent = secondParagraph;
+    articleParagraph2.textContent = thirdParagraph;
+    // pElement1.textContent = content;
+
+    article.addEventListener('click', () => {
+        spanElement.classList.toggle('article-open')
+    });
 };
 
-const article = createArticleComponent('test title', 'test date', 'test content');
+const article = data.forEach( data => createArticleComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
