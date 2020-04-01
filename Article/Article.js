@@ -170,7 +170,7 @@ const data = [
 
 
 const  createArticleComponent = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
-    let articleContainer = document.querySelector('.articles');
+    // let articleContainer = document.querySelector('.articles');
     let article = document.createElement('div');
     let articleTitle = document.createElement('h2');
     let articleDate = document.createElement('p');
@@ -179,34 +179,34 @@ const  createArticleComponent = (title, date, firstParagraph, secondParagraph, t
     let articleParagraph2 = document.createElement('p');
     let articleButton = document.createElement('span');
 
-    // let articleParagraph = numOfParagraphs.forEach(paragraph => {
-//     document.createElement('p');
-//
-// });
-    let divContainer = articleContainer.appendChild(article);
-    let h2Element = divContainer.appendChild(articleTitle);
-    let pElement0 = divContainer.appendChild(articleDate);
-    let pElement1 = divContainer.appendChild(articleParagraph0);
-    let pElement2 = divContainer.appendChild(articleParagraph1);
-    let pElement3 = divContainer.appendChild(articleParagraph2);
-    let spanElement = divContainer.appendChild(articleButton);
+    // let divContainer = articleContainer.appendChild(article);
+    let h2Element = article.appendChild(articleTitle);
+    let pElement0 = article.appendChild(articleDate);
+    let pElement1 = article.appendChild(articleParagraph0);
+    let pElement2 = article.appendChild(articleParagraph1);
+    let pElement3 = article.appendChild(articleParagraph2);
+    let spanElement = article.appendChild(articleButton);
 
-    divContainer.classList.add('article');
-    pElement0.classList.add('date');
-    spanElement.classList.add('expandButton');
+    article.classList.add('article');
+    articleDate.classList.add('date');
+    articleButton.classList.add('expandButton');
 
-    // spanElement.style.border = '1px solid black';
-    //
+    const open = '\u25bc';
+
     articleTitle.textContent = title;
     articleDate.textContent = date;
     articleParagraph0.textContent = firstParagraph;
     articleParagraph1.textContent = secondParagraph;
     articleParagraph2.textContent = thirdParagraph;
+    articleButton.textContent = open;
     // pElement1.textContent = content;
 
-    article.addEventListener('click', () => {
-        spanElement.classList.toggle('article-open')
+    articleButton.addEventListener('click', () => {
+        article.classList.toggle('article-open')
     });
+
+    return article;
 };
 
-const article = data.forEach( data => createArticleComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+const articleContainer = document.querySelector('.articles');
+const article = data.forEach( data => articleContainer.appendChild(createArticleComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph)));
